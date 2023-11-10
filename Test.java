@@ -28,6 +28,13 @@ public class Test
         int inAge = in.nextInt();
 
         if (mapUser.containsKey(inAge)) {
+            Comparator<User> compareByName = new Comparator<User>() {
+                public int compare(User user1, User user2) {
+                    return user1.getName().compareTo(user2.getName());
+                }
+            };
+            Collections.sort(mapUser.get(inAge), compareByName);
+
             for (User u : mapUser.get(inAge))
                 System.out.println(u.toString());
         }
